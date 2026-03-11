@@ -45,3 +45,6 @@
 .vs/
 .vscode/
 *.swp
+
+# hardware simulation
+tools/
