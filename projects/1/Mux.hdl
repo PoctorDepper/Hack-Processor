@@ -5,11 +5,16 @@
 /** 
  * Multiplexor:
  * if (sel = 0) out = a, else out = b
+ * 
+ * sb + s'a = ((sb)'(s'a)')'
  */
 CHIP Mux {
     IN a, b, sel;
     OUT out;
 
     PARTS:
-    //// Replace this comment with your code.
+	Not(in=sel, out=nsel);
+	Nand(a=a, b=nsel, out=asel);
+	Nand(a=b, b=sel, out=bsel);
+	Nand(a=asel, b=bsel, out=out);
 }

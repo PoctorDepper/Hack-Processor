@@ -5,11 +5,15 @@
 /**
  * Or gate:
  * if (a or b) out = 1, else out = 0 
+ *
+ * a+b=(a'b')'
  */
 CHIP Or {
     IN a, b;
     OUT out;
 
     PARTS:
-    //// Replace this comment with your code.
+	Not(in=a, out=na);
+	Not(in=b, out=nb);
+	Nand(a=na, b=nb, out=out);
 }
