@@ -113,10 +113,15 @@ int main(const int argc, const char* argv[])
                 apply_write_path(filepath, '/');
         }
         else {
+                const char* filename = strrchr(filepath, '/');
+                if (!filename)
+                        filename = filepath;
+                else
+                        filename++;
                 // Single file, no bootstrapping
                 file_lines* vm = new_file_lines();
                 read_file(filepath, vm, buffer, sizeof(buffer));
-                translate(vm, assembly, filepath, buffer);
+                translate(vm, assembly, filename, buffer);
                 free_file_lines(vm);
                 apply_write_path(filepath, '.');
         }
