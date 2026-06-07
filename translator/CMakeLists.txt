@@ -8,4 +8,5 @@ include_directories(include/)
 add_executable(translator
         src/main.c
         src/file_lines.c
+        src/translator.c
 )
